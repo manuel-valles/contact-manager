@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import TextImputGroup from '../layout/TextInputGroup';
 import uuid from 'uuid';
 
 class AddContact extends Component {
@@ -43,39 +44,28 @@ class AddContact extends Component {
               <div className="card-header">Add Contact</div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input
-                      type="text"
-                      className="form-control form-control-lg"
-                      name="name"
-                      placeholder="Enter name"
-                      value={name}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      className="form-control form-control-lg"
-                      name="email"
-                      placeholder="Enter email"
-                      value={email}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
-                    <input
-                      type="text"
-                      className="form-control form-control-lg"
-                      name="phone"
-                      placeholder="Enter phone number"
-                      value={phone}
-                      onChange={this.onChange}
-                    />
-                  </div>
+                  <TextImputGroup
+                    label="name"
+                    name="name"
+                    placeholder="Enter name"
+                    value={name}
+                    onChange={this.onChange}
+                  />
+                  <TextImputGroup
+                    label="email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={this.onChange}
+                  />
+                  <TextImputGroup
+                    label="phone"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    value={phone}
+                    onChange={this.onChange}
+                  />
                   <button className="btn btn-light btn-block">
                     Add contact
                   </button>
@@ -89,4 +79,7 @@ class AddContact extends Component {
   }
 }
 
+TextImputGroup.defaultProps = {
+  type: 'text'
+};
 export default AddContact;
